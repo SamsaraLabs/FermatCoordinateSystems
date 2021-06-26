@@ -1,0 +1,23 @@
+{
+  "name": "samsara/fermat-coordinate-systems",
+  "type": "library",
+  "description": "A module for the Fermat math library which adds coordinate systems.",
+  "keywords": ["math", "bigint", "large numbers", "numbers", "coordinates", "coordinate", "spherical coordinates", "cartesian coordinates", "cylindrical coordinates"],
+  "license": "GPL-2.0-or-later",
+  "require": {
+    "samsara/fermat": ">=v2.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "9.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Samsara\\Fermat\\": "src/Samsara/Fermat/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Samsara\\Fermat\\": "tests/Samsara/Fermat/"
+    }
+  }
+}
