@@ -1,4 +1,4 @@
-# Fermat Matrices and Vectors
+# Fermat Coordinate Systems
 
 [![Build Status](https://travis-ci.org/JordanRL/Fermat.svg?branch=master)](https://travis-ci.org/JordanRL/Fermat) [![Code Coverage](https://scrutinizer-ci.com/g/JordanRL/Fermat/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/JordanRL/Fermat/?branch=master) [![Latest Stable Version](https://poser.pugx.org/samsara/fermat/v/stable)](https://packagist.org/packages/samsara/fermat) [![Total Downloads](https://poser.pugx.org/samsara/fermat/downloads)](https://packagist.org/packages/samsara/fermat) [![Latest Unstable Version](https://poser.pugx.org/samsara/fermat/v/unstable)](https://packagist.org/packages/samsara/fermat) [![License](https://poser.pugx.org/samsara/fermat/license)](https://packagist.org/packages/samsara/fermat)
 
