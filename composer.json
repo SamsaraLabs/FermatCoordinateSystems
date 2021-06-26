@@ -4,6 +4,25 @@
   "description": "A module for the Fermat math library which adds coordinate systems.",
   "keywords": ["math", "bigint", "large numbers", "numbers", "coordinates", "coordinate", "spherical coordinates", "cartesian coordinates", "cylindrical coordinates"],
   "license": "GPL-2.0-or-later",
+  "homepage": "https://jordanrl.github.io/Fermat/",
+  "funding": [
+    {
+      "type": "github",
+      "url": "https://github.com/sponsors/JordanRL"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/JordanRL/Fermat/issues",
+    "docs": "https://jordanrl.github.io/Fermat/",
+    "source": "https://github.com/SamsaraLabs/FermatCoordinateSystems"
+  },
+  "authors": [
+    {
+      "name": "Jordan LeDoux",
+      "homepage": "https://github.com/JordanRL",
+      "role": "Developer"
+    }
+  ],
   "require": {
     "samsara/fermat": ">=v2.0"
   },
