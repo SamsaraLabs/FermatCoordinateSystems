@@ -10,14 +10,14 @@ This is a module for the [Fermat](https://github.com/JordanRL/Fermat) math libra
 
 To install, simply require the package using composer:
 
-    composer require samsara/fermat-matrices-and-vectors "1.*"
+    composer require samsara/fermat-coordinate-systems "1.*"
     
 Or include it in your `composer.json` file:
 
 ```json
 {
     "require": {
-        "samsara/fermat-matrices-and-vectors": "1.*"
+        "samsara/fermat-coordinate-systems": "1.*"
     }
 }
 ```
