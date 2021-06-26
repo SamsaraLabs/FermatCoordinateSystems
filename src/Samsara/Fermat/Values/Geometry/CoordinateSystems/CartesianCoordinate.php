@@ -38,6 +38,14 @@ class CartesianCoordinate extends Coordinate implements TwoDCoordinateInterface,
         }
 
         parent::__construct($data);
+
+        if (!array_key_exists('y', $this->parameters)) {
+            $this->parameters['y'] = 1;
+        }
+
+        if (!array_key_exists('z', $this->parameters)) {
+            $this->parameters['z'] = 2;
+        }
     }
 
     /**

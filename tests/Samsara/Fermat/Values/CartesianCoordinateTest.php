@@ -42,7 +42,7 @@ class CartesianCoordinateTest extends TestCase
 
         $this->assertEquals('1', $coord3->getAxis('x')->getValue());
         $this->assertEquals('2', $coord3->getAxis('y')->getValue());
-        $this->assertEquals('0', $coord3->getAxis('z')->getValue());
+        $this->assertEquals('0', $coord3->getAxis(2)->getValue());
     }
 
 }
