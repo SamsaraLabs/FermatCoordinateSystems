@@ -143,7 +143,9 @@ class CartesianCoordinate extends Coordinate implements TwoDCoordinateInterface,
         }
 
         throw new IncompatibleObjectState(
-            'Can only get a polar angle for a CartesianCoordinate of 2 or 3 dimensions.'
+            'Can only get a polar angle for a CartesianCoordinate of 2 or 3 dimensions.',
+            'Ensure the CartesianCoordinate has 2 or 3 dimensions.',
+            'Cannot get the polar angle for a CartesianCoordinate unless it has exactly 2 or 3 dimensions.'
         );
     }
 
@@ -162,7 +164,9 @@ class CartesianCoordinate extends Coordinate implements TwoDCoordinateInterface,
         }
 
         throw new IncompatibleObjectState(
-            'Can only get a planar angle for a CartesianCoordinate of 2 or 3 dimensions.'
+            'Can only get a polar angle for a CartesianCoordinate of 2 or 3 dimensions.',
+            'Ensure the CartesianCoordinate has 2 or 3 dimensions.',
+            'Cannot get the polar angle for a CartesianCoordinate unless it has exactly 2 or 3 dimensions.'
         );
     }
 
@@ -174,13 +178,15 @@ class CartesianCoordinate extends Coordinate implements TwoDCoordinateInterface,
     {
         if ($this->numberOfDimensions() !== 3) {
             throw new IncompatibleObjectState(
-                'Attempted to get CartesianCoordinate as SphericalCoordinate without the correct number of dimensions.'
+                'Can only get SphericalCoordinate for a CartesianCoordinate of 3 dimensions.',
+                'Ensure the CartesianCoordinate has 3 dimensions.',
+                'Cannot get the SphericalCoordinate for a CartesianCoordinate unless it has exactly 3 dimensions.'
             );
         }
 
         $rho = $this->getDistanceFromOrigin();
-        $theta = '';
-        $phi = '';
+        $theta = $this->getAxis('y')->divide($this->getAxis('x'))->arctan();
+        $phi = $this->getAxis('z')->divide($rho)->arccos();
 
         return new SphericalCoordinate($rho, $theta, $phi);
     }
@@ -195,13 +201,15 @@ class CartesianCoordinate extends Coordinate implements TwoDCoordinateInterface,
     {
         if ($this->numberOfDimensions() !== 3) {
             throw new IncompatibleObjectState(
-                'Attempted to get CartesianCoordinate as CylindricalCoordinate without the correct number of dimensions.'
+                'Can only get CylindricalCoordinate for a CartesianCoordinate of 3 dimensions.',
+                'Ensure the CartesianCoordinate has 3 dimensions.',
+                'Cannot get the CylindricalCoordinate for a CartesianCoordinate unless it has exactly 3 dimensions.'
             );
         }
 
-        $z = $this->values->get(2);
-        $r = $this->distanceTo(new CartesianCoordinate([0, 0, $z]));
-        $theta = $this->values->get(1)->divide($this->values->get(0))->arctan();
+        $z = $this->getAxis('z');
+        $r = $this->distanceTo(new CartesianCoordinate(0, 0, $z));
+        $theta = $this->getAxis('y')->divide($this->getAxis('x'))->arctan();
 
         return new CylindricalCoordinate($r, $theta, $z);
     }
@@ -214,7 +222,9 @@ class CartesianCoordinate extends Coordinate implements TwoDCoordinateInterface,
     {
         if ($this->numberOfDimensions() !== 2) {
             throw new IncompatibleObjectState(
-                'Attempted to get CartesianCoordinate as PolarCoordinate without the correct number of dimensions.'
+                'Can only get PolarCoordinate for a CartesianCoordinate of 2 dimensions.',
+                'Ensure the CartesianCoordinate has 2 dimensions.',
+                'Cannot get the PolarCoordinate for a CartesianCoordinate unless it has exactly 2 dimensions.'
             );
         }
 
@@ -222,13 +232,15 @@ class CartesianCoordinate extends Coordinate implements TwoDCoordinateInterface,
 
         if ($rho->isEqual(0)) {
             throw new IncompatibleObjectState(
-                'Attempted to convert a CartesianCoordinate at the origin into PolarCoordinate'
+                'Attempted to convert a CartesianCoordinate at the origin into PolarCoordinate',
+                'Do not attempt to do this.',
+                'The origin has an undefined polar angle in the polar coordinate system.'
             );
         }
 
         /** @var ImmutableDecimal $theta */
-        $theta = $this->values->get(0)->divide($rho)->arccos();
-        if ($this->values->get(1)->isNegative()) {
+        $theta = $this->getAxis('x')->divide($rho)->arccos();
+        if ($this->getAxis('y')->isNegative()) {
             $theta = $theta->multiply(-1);
         }
 

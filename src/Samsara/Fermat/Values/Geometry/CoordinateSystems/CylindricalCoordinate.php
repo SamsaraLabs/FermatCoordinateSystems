@@ -28,7 +28,7 @@ class CylindricalCoordinate extends Coordinate implements ThreeDCoordinateInterf
 
     public function getDistanceFromOrigin(): ImmutableDecimal
     {
-        return $this->getAxis('rho');
+        return $this->getAxis('r');
     }
 
     public function distanceTo(CoordinateInterface $coordinate): ImmutableDecimal
@@ -49,8 +49,8 @@ class CylindricalCoordinate extends Coordinate implements ThreeDCoordinateInterf
     public function asCartesian(): CartesianCoordinate
     {
         if (is_null($this->cachedCartesian)) {
-            $x = $this->getAxis('rho')->multiply($this->getAxis('theta')->cos());
-            $y = $this->getAxis('rho')->multiply($this->getAxis('theta')->sin());
+            $x = $this->getAxis('r')->multiply($this->getAxis('theta')->cos());
+            $y = $this->getAxis('r')->multiply($this->getAxis('theta')->sin());
             $z = $this->getAxis('z');
 
             $this->cachedCartesian = new CartesianCoordinate($x, $y, $z);
@@ -62,7 +62,7 @@ class CylindricalCoordinate extends Coordinate implements ThreeDCoordinateInterf
     public function asSpherical(): SphericalCoordinate
     {
         if (is_null($this->cachedSpherical)) {
-            $rho = $this->getAxis('rho')->pow(2)->add($this->getAxis('z')->pow(2))->sqrt($this->getAxis('z')->getScale());
+            $rho = $this->getAxis('r')->pow(2)->add($this->getAxis('z')->pow(2))->sqrt($this->getAxis('z')->getScale());
             $theta = $this->getAxis('theta');
             $phi = $this->getAxis('z')->divide($rho);
 
