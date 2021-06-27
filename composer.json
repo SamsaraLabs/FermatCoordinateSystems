@@ -2,7 +2,7 @@
   "name": "samsara/fermat-coordinate-systems",
   "type": "library",
   "description": "A module for the Fermat math library which adds coordinate systems.",
-  "keywords": ["math", "bigint", "large numbers", "numbers", "coordinates", "coordinate", "spherical coordinates", "cartesian coordinates", "cylindrical coordinates"],
+  "keywords": ["math", "bigint", "large numbers", "numbers", "coordinates", "coordinate", "spherical coordinates", "cartesian coordinates", "cylindrical coordinates", "polar coordinates"],
   "license": "GPL-2.0-or-later",
   "homepage": "https://jordanrl.github.io/Fermat/",
   "funding": [
